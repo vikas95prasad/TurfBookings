@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @turf_detail.name %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @turf_detail.phone %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @turf_detail.address %>
+</p>
+
+<%= link_to 'Edit', edit_turf_detail_path(@turf_detail) %> |
+<%= link_to 'Back', turf_details_path %>

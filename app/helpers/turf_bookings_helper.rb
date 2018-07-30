@@ -1,0 +1,2 @@
+module TurfBookingsHelper
+end

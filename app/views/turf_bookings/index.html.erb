@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Turf Bookings</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Phone</th>
+      <th>Address</th>
+      <th>Book date</th>
+      <th>Start time</th>
+      <th>End time</th>
+      <th>Total duration</th>
+      <th>Amount</th>
+      <th>Status</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @turf_bookings.each do |turf_booking| %>
+      <tr>
+        <td><%= turf_booking.name %></td>
+        <td><%= turf_booking.phone %></td>
+        <td><%= turf_booking.address %></td>
+        <td><%= turf_booking.book_date %></td>
+        <td><%= turf_booking.start_time %></td>
+        <td><%= turf_booking.end_time %></td>
+        <td><%= turf_booking.total_duration %></td>
+        <td><%= turf_booking.amount %></td>
+        <td><%= turf_booking.status %></td>
+        <td><%= link_to 'Show', turf_booking %></td>
+        <td><%= link_to 'Edit', edit_turf_booking_path(turf_booking) %></td>
+        <td><%= link_to 'Destroy', turf_booking, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Turf Booking', new_turf_booking_path %>

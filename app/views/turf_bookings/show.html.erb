@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @turf_booking.name %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @turf_booking.phone %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @turf_booking.address %>
+</p>
+
+<p>
+  <strong>Book date:</strong>
+  <%= @turf_booking.book_date %>
+</p>
+
+<p>
+  <strong>Start time:</strong>
+  <%= @turf_booking.start_time %>
+</p>
+
+<p>
+  <strong>End time:</strong>
+  <%= @turf_booking.end_time %>
+</p>
+
+<p>
+  <strong>Total duration:</strong>
+  <%= @turf_booking.total_duration %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @turf_booking.amount %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @turf_booking.status %>
+</p>
+
+<%= link_to 'Edit', edit_turf_booking_path(@turf_booking) %> |
+<%= link_to 'Back', turf_bookings_path %>

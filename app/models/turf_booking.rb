@@ -1,0 +1,2 @@
+class TurfBooking < ApplicationRecord
+end
