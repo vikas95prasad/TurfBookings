@@ -9,6 +9,7 @@ class CreateTurfBookings < ActiveRecord::Migration[5.2]
       t.time :end_time
       t.string :total_duration
       t.integer :amount
+      t.string :payment_options
       t.string :status
 
       t.timestamps

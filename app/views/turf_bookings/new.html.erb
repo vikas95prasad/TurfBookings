@@ -1,5 +1,85 @@
-<h1>New Turf Booking</h1>
+<% content_for :title, "Add Booking" %>
 
-<%= render 'form', turf_booking: @turf_booking %>
-
-<%= link_to 'Back', turf_bookings_path %>
+<div class="ibox float-e-margins">
+  <div class="ibox-title">
+    <h5>Add Booking <small>Please </small></h5>
+    <div class="ibox-tools">
+      <a class="collapse-link">
+        <i class="fa fa-chevron-up"></i>
+      </a>
+      <a class="close-link">
+        <i class="fa fa-times"></i>
+      </a>
+    </div>
+  </div>
+  <div class="ibox-content">
+    <div class="row">
+      <%= form_for @booking do|f| %>
+          <div class="col-sm-6 b-r"><h3 class="m-t-none m-b">Customer Info</h3>
+            <div class="form-group">
+              <label>Name</label>
+              <%= f.text_field :name, :placeholder=>"Enter full name", :class=>"form-control", :required=>'' %>
+            </div>
+            <div class="form-group">
+              <label>Phone</label>
+              <%= f.text_field :phone, :placeholder=>"Enter phone number", :class=>"form-control", :required=>'' %>
+            </div>
+            <div class="form-group">
+              <label>Address</label>
+              <%= f.text_area :address, :placeholder=>"Enter full address", :class=>"form-control", :rows=>"3", :required=>'' %>
+            </div>
+          </div>
+          <div class="col-sm-6"><h3 class="m-t-none m-b">Booking Info</h3>
+            <div class="form-group">
+              <label>Booking Date</label>
+              <%= f.date_field :book_date, :class=>'form-control', :required=>'' %>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label>From Time</label>
+                  <%= f.time_field :start_time, :placeholder=>"Enter From Time", :class=>"form-control", :rows=>"3", :required=>'' %>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label>To Time</label>
+                  <%= f.time_field :end_time, :placeholder=>"Enter To Time", :class=>"form-control", :required=>'' %>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label>Select Payment Option</label>
+                  <%= f.select :payment_options, options_for_select(['Offline', 'Prepay (Full)', 'Prepay (Half)']), {}, {:class=>'form-control m-b', :required=>''} %>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label>Amount</label>
+                  <%= f.text_field :amount, :placeholder=>"Enter total amount", :type=>'number', :class=>"form-control", :required=>'' %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-12">
+            <div class="row">
+              <div class="hr-line-dashed"></div>
+              <div class="form-group">
+                <label class="col-sm-2">Status</label>
+                <div class="col-sm-10">
+                  <label class="checkbox-inline i-checks"> <%= f.radio_button :status, 'confirm', :class=>'icheckbox_square-green' %> Confirm </label>
+                  <label class="checkbox-inline i-checks"> <%= f.radio_button :status, 'tentative', :class=>'icheckbox_square-green' %> Tentative </label>
+                  <label class="checkbox-inline i-checks"> <%= f.radio_button :status, 'cancelled', :class=>'icheckbox_square-green' %> Cancelled </label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-12 hr-line-dashed"></br>
+            <%= f.submit :class=>"btn btn-sm btn-primary pull-right m-t-n-xs" %>
+          </div>
+      <% end %>
+    </div>
+  </div>
+</div>
