@@ -12,6 +12,7 @@
       <%= csrf_meta_tags %>
 
       <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+      <%= javascript_include_tag 'application' %>
       <%= stylesheet_link_tag    'application', :media => "all" %>
       <%= stylesheet_link_tag    'print', :media => "print" %>
 
@@ -118,7 +119,7 @@
     </div>
 
     <!-- Mainly scripts -->
-    <%= javascript_include_tag 'application' %>
+    
 
     <!-- Custom and plugin javascript -->
     <script type="text/javascript">
