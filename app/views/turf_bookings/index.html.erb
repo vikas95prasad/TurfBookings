@@ -1,43 +1,81 @@
-<p id="notice"><%= notice %></p>
+<% content_for :title, "All Bookings" %>
 
-<h1>Turf Bookings</h1>
+<div class="row">
+  <div class="col-lg-12">
+    <div class="ibox float-e-margins">
+      <div class="ibox-title">
+        <h5>All Bookings Data</h5>
+        <div class="ibox-tools">
+          <a class="collapse-link">
+            <i class="fa fa-chevron-up"></i>
+          </a>
+          <a class="close-link">
+            <i class="fa fa-times"></i>
+          </a>
+        </div>
+      </div>
+      <div class="ibox-content">
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Phone</th>
-      <th>Address</th>
-      <th>Book date</th>
-      <th>Start time</th>
-      <th>End time</th>
-      <th>Total duration</th>
-      <th>Amount</th>
-      <th>Status</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+        <div class="table-responsive">
+          <table class="table table-striped table-bordered table-hover dataTables-example">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Booking Date</th>
+                <th>Booking Time</th>
+                <th>Payment Option</th>
+                <th>Amount</th>
+                <th>Status</th>
+                <th width="101px">Actions</th>
+              </tr>
+            </thead>
 
-  <tbody>
-    <% @turf_bookings.each do |turf_booking| %>
-      <tr>
-        <td><%= turf_booking.name %></td>
-        <td><%= turf_booking.phone %></td>
-        <td><%= turf_booking.address %></td>
-        <td><%= turf_booking.book_date %></td>
-        <td><%= turf_booking.start_time %></td>
-        <td><%= turf_booking.end_time %></td>
-        <td><%= turf_booking.total_duration %></td>
-        <td><%= turf_booking.amount %></td>
-        <td><%= turf_booking.status %></td>
-        <td><%= link_to 'Show', turf_booking %></td>
-        <td><%= link_to 'Edit', edit_turf_booking_path(turf_booking) %></td>
-        <td><%= link_to 'Destroy', turf_booking, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+            <tbody>
 
-<br>
+            <% @bookings.each do |booking| %>
 
-<%= link_to 'New Turf Booking', new_turf_booking_path %>
+              <tr class="">
+                <td><%= booking.name %></td>
+                <td><%= booking.phone %></td>
+                <td><%= booking.book_date.try(:strftime,"%d/%m/%y") %></td>
+                <td><%= booking.start_time.try(:strftime, "%I:%M%p") %> - <%= booking.end_time.try(:strftime, "%I:%M%p") %></td>
+                <td><%= booking.payment_options %></td>
+                <td><%= booking.amount %></td>
+                <td><span class="badge badge-primary"> <%= booking.status.titleize %></span></td>
+                <td>
+                  <%= link_to turf_booking_path(booking.id), :class=>'btn btn-white btn-bitbucket', method: :delete, data: {confirm: 'Are you sure?'} do %>
+                    <i class="fa fa-trash-o" aria-hidden="true"></i>
+                  <% end %>
+                  <%= link_to edit_turf_booking_path(booking.id), :class=>'btn btn-white btn-bitbucket' do %>
+                      <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                  <% end %>
+                  <%= link_to turf_booking_path(booking.id), :class=>'btn btn-white btn-bitbucket' do %>
+                      <i class="fa fa-print" aria-hidden="true"></i>
+                  <% end %>
+                </td>
+              </tr>
+
+            <% end %>
+
+            </tbody>
+
+            <tfoot>
+              <tr>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Booking Date</th>
+                <th>Booking Time</th>
+                <th>Payment Option</th>
+                <th>Amount</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
