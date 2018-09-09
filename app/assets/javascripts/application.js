@@ -13,4 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require moment
+//= require 3dslider
+//= require all
 //= require_tree .

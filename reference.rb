@@ -12,4 +12,3 @@
 #  has_many :restaurants, through: :bookings
 # end
 
-
